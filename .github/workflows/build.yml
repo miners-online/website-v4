@@ -53,5 +53,5 @@ jobs:
         with:
           branch: gh-pages
           github_token: '${{ secrets.GITHUB_TOKEN  }}'
-          source_folder: output
+          source_folder: ${{github.workspace}}/output
         if: success() && github.event == 'push'
