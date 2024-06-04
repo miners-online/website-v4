@@ -49,9 +49,4 @@ jobs:
         run: pelican -s ${{github.workspace}}/publishconf.py
 
       - name: Deploy
-        uses: seanmiddleditch/gha-publish-to-git@master
-        with:
-          branch: gh-pages
-          github_token: '${{ secrets.GITHUB_TOKEN  }}'
-          source_folder: ${{github.workspace}}/output
-        if: success() && github.event == 'push'
+        run: ghp-import output -b gh-pages && git push origin gh-pages
