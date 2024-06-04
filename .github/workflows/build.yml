@@ -49,8 +49,9 @@ jobs:
         run: pelican ${{github.workspace}}/content -s ${{github.workspace}}/publishconf.py
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/main' }}
+        uses: seanmiddleditch/gha-publish-to-git@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
+          branch: gh-pages
+          github_token: '${{ secrets.GITHUB_TOKEN  }}'
+          source_folder: output
+        if: success() && github.event == 'push'
