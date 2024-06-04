@@ -49,4 +49,4 @@ jobs:
         run: pelican -s ${{github.workspace}}/publishconf.py
 
       - name: Deploy
-        run: ghp-import output -b gh-pages && git push origin gh-pages
+        run: ghp-import ${{github.workspace}}/output -b gh-pages && git push origin gh-pages
