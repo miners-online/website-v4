@@ -46,7 +46,7 @@ jobs:
         run: python3 -m pip install -r ./requirements.txt
 
       - name: Build
-        run: pelican ${{github.workspace}}/content -s ${{github.workspace}}/publishconf.py
+        run: pelican -s ${{github.workspace}}/publishconf.py
 
       - name: Deploy
         uses: seanmiddleditch/gha-publish-to-git@master
